@@ -37,8 +37,8 @@ module mealy_1001_non_overlap (
 
         S3: begin
           if (din) begin
-            dout <= 1;       // Sequence 1001 detected
-            state <= S0;     // Reset to start (non-overlapping)
+            dout <= 1;      
+            state <= S0;     
           end else begin
             dout <= 0;
             state <= S0;
