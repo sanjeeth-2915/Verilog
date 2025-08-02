@@ -23,13 +23,11 @@ module moore_1001_non_overlap (
         S1: state <= (din) ? S1 : S2;
         S2: state <= (din) ? S1 : S3;
         S3: state <= (din) ? S4 : S0;
-        S4: state <= S0;  // After detection, reset to initial (non-overlapping)
+        S4: state <= S0;
         default: state <= S0;
       endcase
     end
   end
-
-  // Output logic
   always @(*) begin
     case (state)
       S4: dout = 1;
