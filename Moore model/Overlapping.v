@@ -22,13 +22,11 @@ module moore_1001 (
         S1: state <= (din) ? S1 : S2;
         S2: state <= (din) ? S1 : S3;
         S3: state <= (din) ? S4 : S0;
-        S4: state <= (din) ? S1 : S0; // output state
+        S4: state <= (din) ? S1 : S0; 
         default: state <= S0;
       endcase
     end
   end
-
-  // Output logic (Moore → based only on state)
   always @(*) begin
     case (state)
       S4: dout = 1;
