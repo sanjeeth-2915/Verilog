@@ -1,57 +1,57 @@
-module sd1001_mealy(input bit clk,
-                   input logic reset,
-                   input logic din,
-                   output logic dout);
+module mealy_1001_non_overlap (
+  input clk,
+  input reset,
+  input din,
+  output reg dout
+);
 
-  typedef enum logic [1:0] {S0, S1, S2, S3} state_t;
-  state_t state;
+  parameter S0 = 3'b000;
+  parameter S1 = 3'b001;
+  parameter S2 = 3'b010;
+  parameter S3 = 3'b011;
+
+  reg [2:0] state;
 
   always @(posedge clk or posedge reset) begin
-    if(reset) begin
-      dout <= 1'b0;
+    if (reset) begin
       state <= S0;
-    end
-    else begin
-      case(state)
+      dout <= 0;
+    end else begin
+      case (state)
         S0: begin
-          if(din) begin
-            state <= S1;
-            dout <=1'b0;
-          end
-          else
-            dout <=1'b0;
+          dout <= 0;
+          if (din) state <= S1;
         end
+
         S1: begin
-          if(~din) begin
-            state <= S2;
-            dout <=1'b0;
-          end
-          else begin
-            dout <=1'b0;
-          end
+          dout <= 0;
+          if (~din) state <= S2;
+          else state <= S1;
         end
+
         S2: begin
-          if(~din) begin
-            state <= S3;
-            dout <=1'b0;
-          end
-          else begin
-            state <= S1;
-            dout <=1'b0;
+          dout <= 0;
+          if (~din) state <= S3;
+          else state <= S1;
+        end
+
+        S3: begin
+          if (din) begin
+            dout <= 1;       // Sequence 1001 detected
+            state <= S0;     // Reset to start (non-overlapping)
+          end else begin
+            dout <= 0;
+            state <= S0;
           end
         end
-        S3: begin
-          if(din) begin
-            state <= S0;
-            dout <=1'b1;
-          end
-          else begin
-            state <= S0;
-            dout <=1'b0;
-          end
+
+        default: begin
+          dout <= 0;
+          state <= S0;
         end
       endcase
     end
   end
 
 endmodule
+
