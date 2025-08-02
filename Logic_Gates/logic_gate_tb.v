@@ -13,6 +13,8 @@ logic_gates uut (.a(a),
                 .xnor_gate(xnor_gate));
 
 initial begin 
+
+  $display ("A = %b,B = %b,%b,%b,%b,%b,%b,%b,%b " ,a,b,and_gate,or_gate,nand_gate,nor_gate,not_gate,xor_gate,xnor_gate);
          a=0; b=0;
     #5   a=0; b=1;
     #5   a=1; b=0;
