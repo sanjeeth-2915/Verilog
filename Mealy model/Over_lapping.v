@@ -42,8 +42,8 @@ module mealy_1001 (
 
         S3: begin
           if (din) begin
-            dout <= 1;      // Sequence 1001 matched
-            state <= S1;    // Allow overlap
+            dout <= 1;      
+            state <= S1;    
           end else begin
             dout <= 0;
             state <= S0;
