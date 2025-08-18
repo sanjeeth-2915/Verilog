@@ -1,4 +1,4 @@
-summodule tb_full_adder;
+module tb_full_adder;
   wire a,b,c;
   reg sum,carry;
 
