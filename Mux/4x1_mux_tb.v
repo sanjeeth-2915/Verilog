@@ -8,7 +8,8 @@ module 4x1_mux_tb;
                .c(c),
                .d(d),
                .s0(s0),
-               .s1(s1)
+               .s1(s1),
+               .y(y)
               );
   
   initial begin 
