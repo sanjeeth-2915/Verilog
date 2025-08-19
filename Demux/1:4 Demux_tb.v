@@ -24,7 +24,7 @@ wire a,b,c,d;
     sel = 2'b10; #10;
     sel = 2'b11; #10;
 
-    $finish 
+    $finish;
 
   end 
 endmodule 
