@@ -18,7 +18,7 @@ module tb_decoder_2to4;
 
         en = 0; 
         din = 2'b10; #10;
-
+        
         $finish;
     end
 endmodule
