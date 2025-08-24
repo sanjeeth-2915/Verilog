@@ -21,6 +21,7 @@ module tb_jk_ff;
              $time, reset, J, K, Q);
 
     reset = 1; J = 0; K = 0; #10;
+    
     reset = 0;
 
     
