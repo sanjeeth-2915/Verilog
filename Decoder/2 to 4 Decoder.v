@@ -5,7 +5,7 @@ module decoder_2to4 (
 );
 
     always @(*) begin
-        if (en) begin
+        if (en) begin   
             case (din)
                 2'b00: dout = 4'b0001;
                 2'b01: dout = 4'b0010;
