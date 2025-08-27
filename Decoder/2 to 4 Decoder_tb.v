@@ -10,7 +10,7 @@ module tb_decoder_2to4;
     initial begin
         $monitor("Time=%0t | en=%b | din=%b | dout=%b", $time, en, din, dout);
 
-        en = 1; 
+        en = 1;
         din = 2'b00; #10;
         din = 2'b01; #10;
         din = 2'b10; #10;
