@@ -5,3 +5,5 @@ module half_adder(
     assign sum = a^b;
     assign cout = a&b;
 endmodule
+
+
