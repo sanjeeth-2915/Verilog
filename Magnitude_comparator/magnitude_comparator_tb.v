@@ -1,22 +1,19 @@
-module tb_magnitude_comparator_16;
-    logic [15:0] A, B;
-    logic A_gt_B, A_eq_B, A_lt_B;
+module tb_comparator_16bit;
+   
+    reg  [15:0] A, B;
+    wire A_gt_B, A_eq_B, A_lt_B;
 
-    magnitude_comparator_16 uut (
-        .A(A), .B(B),
-        .A_gt_B(A_gt_B), .A_eq_B(A_eq_B), .A_lt_B(A_lt_B)
-    );
-
+    comparator_16bit uut (A, B, A_gt_B, A_eq_B, A_lt_B);
+    
     initial begin
-        A = 16'd100; B = 16'd50; #10;
-        $display("A > B: %b, A == B: %b, A < B: %b", A_gt_B, A_eq_B, A_lt_B);
+        $monitor("Time=%0t A=%d B=%d | A_gt_B=%b A_eq_B=%b A_lt_B=%b",
+                 $time, A, B, A_gt_B, A_eq_B, A_lt_B);
 
-        A = 16'd50; B = 16'd100; #10;
-        $display("A > B: %b, A == B: %b, A < B: %b", A_gt_B, A_eq_B, A_lt_B);
-
-        A = 16'd100; B = 16'd100; #10;
-        $display("A > B: %b, A == B: %b, A < B: %b", A_gt_B, A_eq_B, A_lt_B);
+        A = 16'd25; B = 16'd20; #10; 
+        A = 16'd15; B = 16'd30; #10; 
+        A = 16'd50; B = 16'd50; #10; 
 
         $finish;
     end
 endmodule
+
