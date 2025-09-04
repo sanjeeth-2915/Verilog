@@ -16,4 +16,4 @@ module decoder_2to4 (
             dout = 4'b0000;
         end
     end
-endmodule
+endmodule  
