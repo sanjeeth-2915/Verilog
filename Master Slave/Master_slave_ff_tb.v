@@ -24,9 +24,9 @@ module tb_ms_d_ff;
     reset = 0;
 
     D = 1; #10;   
-    D = 0; #10;
-    D = 1; #20;
     D = 0; #20;
+    D = 1; #30;
+    D = 0; #40;
 
     $finish;
   end
