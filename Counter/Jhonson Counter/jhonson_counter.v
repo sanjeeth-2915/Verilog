@@ -10,3 +10,4 @@ module johnson_counter (
             q <= {q[2:0], ~q[3]};  
     end
 endmodule
+
